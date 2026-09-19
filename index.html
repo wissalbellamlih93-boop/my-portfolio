@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Internet Girl // Portfolio</title>
+    <style>
+        body {
+    background: linear-gradient(135deg, #00f0ff, #ff007f);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container holding the whole desktop layout */
+.desktop-container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Glossy Frutiger Metro Glass Panel Base */
+.main-header, .sidebar-panel, .content-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Header & Navigation Styling */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00f0ff;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    background: rgba(0, 240, 255, 0.3);
+    border: 1px solid #00f0ff;
+    text-shadow: 0 0 5px #00f0ff;
+}
+
+/* Split Columns */
+.workspace {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+/* Sidebar Specifics */
+.sidebar-panel {
+    text-align: center;
+}
+
+.avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff007f, #00f0ff);
+    border-radius: 50px;
+    font-size: 50px;
+    line-height: 100px;
+    margin: 0 auto 15px;
+    box-shadow: 0 0 15px #ff007f;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 15px 0;
+}
+/* Container for buttons */
+.action-zone {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.button-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* 2008 Authentic Glossy/Chrome Button Base */
+.chrome-btn {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px; /* Capsule shape popular in Web 2.0 */
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    
+    /* This complex background mimics a light source reflecting off a glossy plastic bead */
+    background: linear-gradient(to bottom, 
+        rgba(255,255,255,0.4) 0%, 
+        rgba(255,255,255,0.1) 49%, 
+        rgba(0,0,0,0.1) 50%, 
+        rgba(0,0,0,0.3) 100%);
+}
+
+/* Neon Glow Color Variants */
+.pink-glow {
+    background-color: #ff007f;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.blue-glow {
+    background-color: #00f0ff;
+    color: #002233;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Hover States (Slightly grows and beams brighter) */
+.chrome-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
+.chrome-btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.4);
+}
+
+/* Retro Web Badge styling */
+.retro-badge {
+    margin-left: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.retro-badge:hover {
+    opacity: 1;
+}
+/* Projects Section Layout */
+.projects-section {
+    margin-top: 25px;
+}
+
+.projects-section h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00f0ff;
+    font-size: 14px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Flex/Grid split container */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* Individual Glossy Cards */
+.project-card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+/* Highlighting variations matching our palette */
+.pink-border { border: 1px solid rgba(255, 0, 127, 0.4); }
+.blue-border { border: 1px solid rgba(0, 240, 255, 0.4); }
+
+/* Card Inner Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card-tag {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.card-status {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.pink-border .card-status { color: #ff007f; text-shadow: 0 0 5px #ff007f; }
+.blue-border .card-status { color: #00f0ff; text-shadow: 0 0 5px #00f0ff; }
+
+.project-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.project-card p {
+    margin: 0 0 20px 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    flex-grow: 1; /* Pushes the button to the bottom evenly */
+}
+
+/* Card Interactive Link */
+.card-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    align-self: flex-start;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+/* Hover effects */
+.project-card:hover {
+    transform: translateY(-5px);
+}
+.pink-border:hover {
+    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.2);
+    border-color: #ff007f;
+}
+.blue-border:hover {
+    box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+    border-color: #00f0ff;
+}
+.project-card:hover .card-link {
+    color: #00f0ff;
+    text-shadow: 0 0 5px #00f0ff;
+}
+
+/* Skills Panel Container */
+.skills-panel {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.skills-panel h4 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 15px 0;
+    letter-spacing: 1px;
+}
+
+/* Individual Skill Structure */
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+/* Color Accent Rules */
+.pink-text { color: #ff007f; text-shadow: 0 0 5px #ff007f; }
+.blue-text { color: #00f0ff; text-shadow: 0 0 5px #00f0ff; }
+.green-text { color: #00ff66; text-shadow: 0 0 5px #00ff66; }
+
+/* The Empty Track Outer Ring */
+.meter-track {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    height: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 2px; /* Gives a neat inset border look */
+}
+
+/* Glowing Neon Filling Bars */
+.meter-fill {
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    background-size: 30px 30px;
+    
+    /* Authentic 2008 candy striping overlay animation */
+    background-image: linear-gradient(
+        45deg, 
+        rgba(255, 255, 255, 0.15) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.15) 75%, 
+        transparent 75%, 
+        transparent
+    );
+    animation: moveStripes 2s linear infinite;
+}
+
+.pink-fill {
+    background-color: #ff007f;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.blue-fill {
+    background-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.green-fill {
+    background-color: #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Keyframes to make the glossy stripes scroll infinitely */
+@keyframes moveStripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 0; }
+}
+/* Mouse Sparkles Base Setup */
+.mouse-sparkle {
+    position: absolute;
+    pointer-events: none; /* Prevents sparkles from blocking clicks on buttons */
+    z-index: 9999; /* Forces sparkles to always hover on top of everything else */
+    animation: sparkleFallAndFade 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    transform: translate(-50%, -50%);
+}
+
+/* Sparkle Movement & Disappearance Path */
+@keyframes sparkleFallAndFade {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Falls downward 60px while drifting outward based on JavaScript variables */
+        transform: translate(calc(-50% + var(--driftX)), calc(-50% + 60px)) scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+/* Navigation Tab System Control Rules */
+.nav-page {
+    display: none; /* Hide all pages by default */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Class applied by JavaScript to show the selected panel view */
+.nav-page.active-page {
+    display: block; /* Turn it on */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact Terminal Form Matrix Layout */
+.contact-terminal {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.input-group label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: bold;
+    color: #00f0ff;
+    text-shadow: 0 0 4px rgba(0, 240, 255, 0.4);
+}
+
+/* Neon Glass input cells texture */
+.contact-terminal input, .contact-terminal textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+/* Active focus neon halo flare */
+.contact-terminal input:focus, .contact-terminal textarea:focus {
+    outline: none;
+    border-color: #ff007f;
+    background: rgba(255, 0, 127, 0.05);
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.4), inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.submit-btn {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+/* Retro Visitor Counter Layout Footer */
+.system-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 15px;
+    border-top: 1px dashed rgba(255,255,255,0.15);
+}
+
+.visitor-counter {
+    background: #000000;
+    border: 2px solid #555555;
+    border-top-color: #222222; /* Beveled inset frame texture look */
+    border-left-color: #222222;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.counter-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    font-weight: bold;
+    color: #00ff66;
+    text-shadow: 0 0 4px rgba(0,255,102,0.4);
+}
+
+/* Classic 2008 Web Counter digital styling text */
+.counter-digits {
+    display: flex;
+    background: #111;
+    border: 1px solid #333;
+}
+
+.digit {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff007f;
+    background: linear-gradient(to bottom, #222 0%, #050505 50%, #000 51%, #111 100%);
+    padding: 2px 6px;
+    border-right: 1px solid #222;
+    text-shadow: 0 0 5px #ff007f;
+}
+.digit:last-child { border-right: none; }
+
+.copyright {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+/* Music Player Live System Time Tracker */
+.player-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    font-weight: bold;
+    color: #00ff66;
+    text-shadow: 0 0 5px rgba(0, 255, 102, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+    </style>
+</head>
+<body>
+
+        <!-- Main Container to center everything -->
+    <div class="desktop-container">
+        
+                <!-- 1. Header Area -->
+        <header class="main-header">
+            <!-- CHANGE "CYBER_VIXEN" BELOW TO YOUR CUSTOM DEV HANDLE -->
+            <div class="logo">CYBER_VIXEN // v1.0</div>
+            <nav class="nav-links">
+                <a href="#" class="nav-btn active" data-target="page-home">Home</a>
+                <a href="#" class="nav-btn" data-target="page-projects">Projects</a>
+                <a href="#" class="nav-btn" data-target="page-contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- 2. Main Workspace Layout -->
+        <div class="workspace">
+            
+            <!-- Left Side: Profile Sidebar -->
+            <aside class="sidebar-panel">
+                <div class="avatar-placeholder">🪩</div>
+                <!-- CHANGE "Status: Coding..." OR YOUR WELCOME TEXT BELOW -->
+                <h3>Status: Online...</h3>
+                <p>Welcome to my digital playground. Clean code, chaotic aesthetics.</p>
+                
+                <hr>
+
+                <!-- Skills Level Panel -->
+                <div class="skills-panel">
+                    <h4>SYSTEM_CAPACITIES //</h4>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>C / C++</span>
+                            <span class="skill-percent pink-text">85%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill pink-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML5 / CSS3</span>
+                            <span class="skill-percent blue-text">95%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill blue-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span class="skill-percent green-text">75%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill green-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- 2008 Audio Player Widget with Live Clock -->
+                <div class="music-player">
+                    <div class="player-top">
+                        <span class="player-title">NOW_PLAYING.EXE</span>
+                        <!-- New embedded system time readout capsule -->
+                        <span id="system-clock" class="player-clock">00:00:00 AM</span>
+                    </div>
+                    
+                    <div class="track-display">
+                        <div class="track-scroller">
+                            <span class="track-name">Digital_Dreams_2008.mp3 — System Aura (Vapor Edit) — 128kbps</span>
+                        </div>
+                    </div>
+
+                    <div class="player-controls">
+                        <button class="player-btn" id="prev-btn">⏮</button>
+                        <button class="player-btn play-btn" id="play-btn">▶</button>
+                        <button class="player-btn" id="next-btn">⏭</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Side Content Panel starts immediately below here -->
+
+
+
+                <h3>Status: Coding...</h3>
+                <p>Welcome to my digital playground. Clean code, chaotic aesthetics.</p>
+                
+                <hr>
+
+                <!-- Brand New Skills Level Panel -->
+                <div class="skills-panel">
+                    <h4>SYSTEM_CAPACITIES //</h4>
+                    
+                    <!-- Skill Item 1 -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>C / C++</span>
+                            <span class="skill-percent pink-text">85%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill pink-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Item 2 -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML5 / CSS3</span>
+                            <span class="skill-percent blue-text">95%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill blue-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Item 3 -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span class="skill-percent green-text">75%</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill green-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+
+            <!-- Right Side: Main Content Area -->
+                                <main class="content-panel">
+                
+                <!-- PAGE 1: HOME PANEL (Visible by default) -->
+                <div id="page-home" class="nav-page active-page">
+                    <h2>System Overview 💻</h2>
+                    <hr>
+                    <p>Welcome to my digital playground. This is where clean, professional modern software engineering hidden underneath a chaotic 2008 futuristic internet girl aesthetic comes to life.</p>
+                    <p>Use the interface navigation array at the top right to explore my active mainframe console modules, project systems, and communication matrices.</p>
+                    
+                    <!-- Moved your action buttons here so they stay on the home dashboard -->
+                    <div class="action-zone">
+                        <h3>System Diagnostics & Links</h3>
+                        <div class="button-row">
+                            <button class="chrome-btn pink-glow">Download CV.exe</button>
+                            <button class="chrome-btn blue-glow">View Source</button>
+                            <a href="#" class="retro-badge">
+                                <img src="https://shields.io" alt="Frutiger Metro Badge">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 2: PROJECTS PANEL (Hidden by default) -->
+                <div id="page-projects" class="nav-page">
+                    <h2>Deployed Applications 🗂️</h2>
+                    <hr>
+                    <p>All system architectures are written with strict design patterns, optimal algorithmic layers, and clean testing configurations.</p>
+                    
+                    <div class="projects-section">
+                        <div class="projects-grid">
+                            <!-- Project Card 1 -->
+                            <div class="project-card pink-border">
+                                <div class="card-header">
+                                    <span class="card-tag">C++ / QT</span>
+                                    <span class="card-status">● LIVE</span>
+                                </div>
+                                <h4>Engine_Matrix.exe</h4>
+                                <p>A high-performance algorithmic simulation engine built with pure C++ and clean architectural layers.</p>
+                                <a href="#" class="card-link">Launch App →</a>
+                            </div>
+
+                            <!-- Project Card 2 -->
+                            <div class="project-card blue-border">
+                                <div class="card-header">
+                                    <span class="card-tag">JavaScript</span>
+                                    <span class="card-status">● RUNNING</span>
+                                }</div>
+                                <h4>Cyber_Sphere_OS</h4>
+                                <p>Interactive web desktop environment simulating full window management and dynamic system layers.</p>
+                                <a href="#" class="card-link">Launch App →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                            <!-- PAGE 3: CONTACT PANEL (Completed Terminal Form) -->
+                <div id="page-contact" class="nav-page">
+                    <h2>Secure Communication Matrix ✉️</h2>
+                    <hr>
+                    <p>Establish a secure link to transmit project assignments, career node requests, or developer telemetry data.</p>
+                    
+                    <form class="contact-terminal" onsubmit="event.preventDefault(); alert('Transmission Successful! 📡✨ [STATUS: 200 OK]');">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="sender-name">// IDENTITY_LOG:</label>
+                                <input type="text" id="sender-name" placeholder="Your Name or Alias" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="sender-email">// UPLINK_NODE:</label>
+                                <input type="email" id="sender-email" placeholder="name@domain.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group message-group">
+                            <label for="sender-msg">// PAYLOAD_DATA:</label>
+                            <textarea id="sender-msg" rows="5" placeholder="Enter your text transmission payload here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="chrome-btn blue-glow submit-btn">Transmit_Data.exe 🚀</button>
+                    </form>
+                </div>
+
+
+            </main>
+
+
+        </div>
+
+    </div>
+    <!-- 2008 Sparkle Effect Logic -->
+    <script>
+        // Listen for mouse movement across the entire screen
+        document.addEventListener('mousemove', function(e) {
+            // Only spawn a sparkle roughly 1 out of every 4 mouse ticks so it's not overwhelming
+            if (Math.random() > 0.25) return;
+
+            // Create a brand new text element for the sparkle
+            const sparkle = document.createElement('span');
+            sparkle.classList.add('mouse-sparkle');
+            
+            // Randomly select an authentic 2008 star type
+            const starTypes = ['★', '✧', '✦', '✨'];
+            sparkle.innerText = starTypes[Math.floor(Math.random() * starTypes.length)];
+
+            // Set coordinates directly where the user's cursor is resting
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+
+            // Randomize size slightly so they feel dynamic
+            const randomSize = Math.random() * 15 + 10; // between 10px and 25px
+            sparkle.style.fontSize = randomSize + 'px';
+
+            // Randomly pick between our signature hot pink or cyan colors
+            sparkle.style.color = Math.random() > 0.5 ? '#ff007f' : '#00f0ff';
+            sparkle.style.textShadow = `0 0 ${randomSize/2}px ` + sparkle.style.color;
+
+            // Give it a tiny random drift direction left or right
+            const driftX = (Math.random() - 0.5) * 40;
+            sparkle.style.setProperty('--driftX', driftX + 'px');
+
+            // Add the element directly into the webpage body
+            document.body.appendChild(sparkle);
+
+            // Automatically wipe it from the DOM after 1 second so your browser stays fast
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        });
+                // Interactive Music Player State Control
+        const playBtn = document.getElementById('play-btn');
+        const eqBars = document.getElementById('eq-bars');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', function() {
+            isPlaying = !isPlaying; // toggle true/false state
+            
+            if (isPlaying) {
+                playBtn.innerText = '⏸'; // Change icon to Pause
+                playBtn.style.backgroundColor = '#00f0ff'; // Swap color layout
+                eqBars.classList.add('playing-eq'); // Start bars dancing!
+            } else {
+                playBtn.innerText = '▶'; // Change icon back to Play
+                playBtn.style.backgroundColor = '#ff007f';
+                eqBars.classList.remove('playing-eq'); // Freeze equalizer
+            }
+        });
+                // Tab Page Switching Engine
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const navPages = document.querySelectorAll('.nav-page');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevents jumping to top of webpage on click
+
+                // 1. Remove "active" class highlight from all navigation tabs
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // 2. Add "active" class highlight to the clicked tab
+                this.classList.add('active');
+
+                // 3. Deactivate all content page panels
+                navPages.forEach(page => page.classList.remove('active-page'));
+
+                // 4. Locate and activate the exact page ID matching the target variable
+                const targetId = this.getAttribute('data-target');
+                const targetPage = document.getElementById(targetId);
+                
+                if (targetPage) {
+                    targetPage.classList.add('active-page');
+                }
+            });
+        });
+            // Dynamic Live System Clock Tracker Loop
+        function updateSystemClock() {
+            const clockElement = document.getElementById('system-clock');
+            const now = new Date();
+            
+            // Format time string accurately to standard local notation
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Convert hour '0' to '12'
+            const formattedHours = String(hours).padStart(2, '0');
+
+            clockElement.innerText = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        // Fire clock instantly on boot execution and bind to refresh every 1 second
+        updateSystemClock();
+        setInterval(updateSystemClock, 1000);
+
+
+    </script>
+
+</body>
+
+</html>
